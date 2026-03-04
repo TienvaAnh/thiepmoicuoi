@@ -1090,15 +1090,16 @@
         // Tự động gửi trạng thái "Đã xem" khi vừa mở trang
         window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
-            // SỬA TẠI ĐÂY: Tìm cả 'n' và 'to'. Nếu có cái nào thì lấy cái đó.
             let guestName = urlParams.get('n') || urlParams.get('to');
             
-            // Nếu không có cả 2 mới để là Khách ẩn danh
-            if (!guestName) {
-                guestName = "Khách ẩn danh";
-            } else {
-                guestName = guestName.replace(/_/g, ' '); // Đổi gạch dưới thành khoảng trắng cho đẹp
+            // CHẶN BOT: Nếu không có tên khách thì THOÁT LUÔN, không gửi gì cả
+            if (!guestName || guestName === "" || guestName.toLowerCase() === "khách ẩn danh") {
+                console.log("Truy cập không có tên khách (có thể là Bot), không gửi thông báo.");
+                return; 
             }
+
+            // Nếu có tên khách, tiến hành đổi dấu gạch dưới thành khoảng trắng
+            guestName = guestName.replace(/_/g, ' ');
 
             const data = {
                 name: guestName,
@@ -1108,8 +1109,11 @@
                 action: "view_only"
             };
 
-            fetch('https://script.google.com/macros/s/AKfycbxbyoqXyfVwDojVItYjBbEnWlNqmGDUDjNimzNqP7Tyt1nC84dBLo9AhMwrYfJpG8RTSQ/exec', {
+            // Gửi dữ liệu đi
+            fetch('https://script.google.com/macros/s/AKfycbxbyoqXyfVw...', { // Giữ nguyên link script của bạn
                 method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
         });
