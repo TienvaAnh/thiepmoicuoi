@@ -17,16 +17,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        .filter-png-fix {
-            /* Quan trọng nhất: Triệt tiêu các ô vuông trắng sáng */
+        .fill-bg-pattern {
+            /* Đổ màu nền thiệp vào đây (Ví dụ màu kem nhạt của thiệp) */
+            background-color: #fdfcfb; 
+            
+            /* Chế độ này sẽ giữ lại họa tiết tối và thay nền sáng bằng màu background-color */
+            background-blend-mode: screen;
+            
+            /* Ép ảnh hiển thị theo màu nền phía sau */
             mix-blend-mode: multiply; 
             
-            /* Tăng độ tương phản để họa tiết hoa rõ nét hơn */
-            filter: contrast(1.2) brightness(1.1);
-            
-            /* Làm mờ nhẹ rìa ảnh nếu vẫn còn vết cắt */
-            mask-image: radial-gradient(circle, black 70%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
+            display: inline-block;
+        }
+
+        .fix-fake-png {
+            display: block;
+            width: 100%;
+            /* Loại bỏ độ chói của các ô vuông trắng */
+            filter: brightness(1.05) contrast(1.1); 
         }
         /* Hoa Anh Dao */
         .cherry-blossom {
@@ -699,12 +707,13 @@
        <!-- Timeline -->
        
     <div class="flex justify-center my-6 reveal">
-    <div class="relative w-64 h-auto">
-        <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider.png" 
-             alt="Họa tiết" 
-             class="w-full h-auto filter-png-fix opacity-80">
+        <div class="fill-bg-pattern w-64 rounded-lg"> 
+            <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider.png" 
+                class="fix-fake-png opacity-90" 
+                alt="divider">
+        </div>
     </div>
-</div>
+ 
 
 <section class="py-12 bg-[#fff5f6] relative overflow-hidden">
     <div class="container mx-auto px-4 max-w-lg">
@@ -774,11 +783,11 @@
             </div>
         </div>
 
-        <<div class="flex justify-center my-6 reveal">
-            <div class="relative w-64 h-auto">
+        <div class="flex justify-center my-6 reveal">
+            <div class="fill-bg-pattern w-64 rounded-lg"> 
                 <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider.png" 
-                    alt="Họa tiết" 
-                    class="w-full h-auto filter-png-fix opacity-80">
+                    class="fix-fake-png opacity-90" 
+                    alt="divider">
             </div>
         </div>
 </section>
