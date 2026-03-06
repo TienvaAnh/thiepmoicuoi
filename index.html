@@ -17,6 +17,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
+        .filter-png-fix {
+            /* Quan trọng nhất: Triệt tiêu các ô vuông trắng sáng */
+            mix-blend-mode: multiply; 
+            
+            /* Tăng độ tương phản để họa tiết hoa rõ nét hơn */
+            filter: contrast(1.2) brightness(1.1);
+            
+            /* Làm mờ nhẹ rìa ảnh nếu vẫn còn vết cắt */
+            mask-image: radial-gradient(circle, black 70%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle, black 70%, transparent 100%);
+        }
         /* Hoa Anh Dao */
         .cherry-blossom {
          position: fixed;
@@ -687,10 +698,12 @@
     </section>
        <!-- Timeline -->
        
-    <div class="w-full bg-[#fff5f6] flex justify-center items-center py-6 relative">
-    <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider.png" 
-         class="w-48 md:w-64 h-auto opacity-90" 
-         alt="Flower Divider">
+    <div class="flex justify-center my-6 reveal">
+    <div class="relative w-64 h-auto">
+        <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider.png" 
+             alt="Họa tiết" 
+             class="w-full h-auto filter-png-fix opacity-80">
+    </div>
 </div>
 
 <section class="py-12 bg-[#fff5f6] relative overflow-hidden">
@@ -761,10 +774,13 @@
             </div>
         </div>
 
-        <div class="flex justify-center mt-12 rotate-180 opacity-60">
-            <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider.png" class="w-32 h-auto" alt="Footer Flower">
+        <<div class="flex justify-center my-6 reveal">
+            <div class="relative w-64 h-auto">
+                <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider.png" 
+                    alt="Họa tiết" 
+                    class="w-full h-auto filter-png-fix opacity-80">
+            </div>
         </div>
-    </div>
 </section>
 
     <!-- CALENDAR SECTION -->
