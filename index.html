@@ -212,6 +212,19 @@
         .heart-mark-active::after {
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(140, 59, 59, 0.3)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
         }
+         /* Hiệu ứng trái tim đập cho timeline */
+        @keyframes heartBeat {
+        0% { transform: scale(1); }
+        14% { transform: scale(1.3); }
+        28% { transform: scale(1); }
+        42% { transform: scale(1.3); }
+        70% { transform: scale(1); }
+        }
+
+        .heart-wave {
+        display: inline-block;
+        animation: heartBeat 2s infinite; /* Tổng thời gian 1 vòng lặp là 2 giây */
+        }
         /* Hiệu ứng trái tim đập biến đổi độ đậm */
         @keyframes heartPulseVariable {
             0% {
@@ -538,37 +551,11 @@
                 animation: wave-bounce 2s ease-in-out infinite;
             }
         </style>
-         <!--<div class="relative z-10 mb-12 px-4 w-full max-w-[340px]">
-            <div class="bg-white/80 backdrop-blur-md py-6 px-4 rounded-[40px] border border-white shadow-sm">
-                <h2 class="font-daytonica text-2xl text-[#c5a059] mb-2 tracking-normal">Thư Mời Tiệc Cưới</h2>
-                <div class="text-[#c5a059] font-bold text-base tracking-widest mb-1">Thứ Hai, 30 . 03 . 2026</div>
-                <div class="text-[10px] font-semibold text-gray-500 uppercase tracking-widest">
-                    Vào lúc 
-                    <span class="text-[#8c3b3b] font-bold text-2xl inline-block heartbeat-text">
-                        11h00
-                    </span> 
-                    sáng
-                </div>
-            </div>
-        </div> -->
     </header>
 
     <!-- INVITATION & FAMILY -->
     <section class="py-16 px-4 max-w-4xl mx-auto text-center relative overflow-hidden">
         <div class="relative w-full max-w-[500px] mx-auto">
-      <!--       <div class="hand-drawn-heart">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 90 C 20 70, 5 45, 15 25 C 25 5, 45 15, 50 25 C 55 15, 75 5, 85 25 C 95 45, 80 70, 50 90" stroke="#8c3b3b" stroke-width="1.5" stroke-linecap="round" />
-                    <path d="M48 82 C 25 65, 12 45, 20 30 C 25 20, 35 22, 42 28" stroke="#c5a059" stroke-width="1" stroke-linecap="round" opacity="0.6" />
-                    <path d="M55 35 C 65 25, 75 28, 78 38 C 80 50, 70 65, 50 85" stroke="#8c3b3b" stroke-width="0.8" stroke-dasharray="3 3" opacity="0.5" />
-                </svg>
-            </div>-->
-           <!-- <div class="hand-drawn-heart">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" filter="drop-shadow(0px 0px 3px rgba(140, 59, 59, 0.3))">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#8c3b3b" opacity="0.8"/>
-                    <path d="M11 18c-3-2.5-5-4.5-5-7s1.5-4 3.5-4c1 0 2 .5 2.5 1.5" stroke="#c5a059" stroke-width="0.5" stroke-linecap="round" fill="none"/>
-                </svg>
-            </div>-->
             <div class="heart-beating-large" style="display: flex; justify-content: center; align-items: center;">
                 <svg viewBox="0 0 32 32" width="150" height="150" filter="drop-shadow(0 0 15px rgba(227, 27, 35, 0.5))">
                     <path fill="#e31b23" d="M16 28.5L14.1 26.6C7.3 20.5 3 16.5 3 11.5 3 7.4 6.2 4.2 10.3 4.2c2.3 0 4.5 1.1 5.7 2.8 1.2-1.7 3.4-2.8 5.7-2.8 4.1 0 7.3 3.2 7.3 7.3 0 5-4.3 9-11.1 15.1L16 28.5z"/>
@@ -629,12 +616,12 @@
         </div>
     </section>
     <!-- WEDDING DETAILS -->
-    <section class="py-14 bg-white text-center px-4 border-b border-rose-50">
+    <section class="py-10 bg-white text-center px-4 border-b border-rose-50">
         <div class="reveal mb-3">
             <!-- <h2 class="font-['Great_Vibes'] text-[40px] text-black mb-2 font-normal leading-relaxed tracking-normal"style="text-shadow: 0.8px 0.8px 0px rgba(197, 160, 89, 0.2); -webkit-font-smoothing: antialiased;">THAM DỰ LỄ CƯỚI</h2>
            <h1 class="font-wedding text-4xl text-black">Minh Tiến & Nguyệt Ánh</h1>*/-->
         </div>
-        <div class="flex items-center justify-center gap-2 mb-1.5 max-w-sm mx-auto">
+        <div class="flex items-center justify-center gap-2 mb-3 max-w-sm mx-auto">
             <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/1A6A7820.JPG" class="w-[30%] aspect-[3/4] object-cover rounded-xl slide-left">
             <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/1A6A7966copy.jpg" class="w-[38%] aspect-[3/4.5] object-cover rounded-xl z-10 shadow-lg border-2 border-white">
             <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/1A6A7912.JPG" class="w-[30%] aspect-[3/4] object-cover rounded-xl slide-right">
@@ -704,88 +691,87 @@
             </div>
         </div>
     </section>
-       <!-- Timeline -->
-    <section class="py-16 bg-white relative overflow-hidden">
-       <div class="flex justify-center mb-6 w-full overflow-hidden">
-            <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider-removebg-preview.png" 
-                class="w-[66vw] md:w-80 opacity-90 h-auto transform translate-x-[2.5%] md:translate-x-0" 
-                alt="Sakura Decor">
-        </div>
-        <div class="container mx-auto px-4 max-w-lg relative">
-            <h2 class="font-wedding text-2xl text-black italic leading-relaxed text-center">Tấm thiệp mời trên bàn, thời gian địa điểm rõ ràng...</h2>
-            
-            <div class="relative">
-                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-px border-l-2 border-solid border-[#e63946]"></div>
+      <section class="py-10 bg-white relative overflow-hidden">
+    <div class="flex justify-center mb-6 w-full overflow-hidden">
+        <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider-removebg-preview.png" 
+            class="w-[66vw] md:w-80 opacity-90 h-auto transform translate-x-[2.5%] md:translate-x-0" 
+            alt="Sakura Decor">
+    </div>
+    <div class="container mx-auto px-4 max-w-lg relative">
+        <h2 class="font-wedding text-2xl text-black italic leading-relaxed text-center">Tấm thiệp mời trên bàn, thời gian địa điểm rõ ràng...</h2>
+        
+        <div class="relative">
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-px border-l-2 border-solid border-[#e63946]"></div>
 
-                <div class="relative flex items-center justify-between mb-12">
-                    <div class="w-5/12 text-right pr-6">
-                        <h3 class="font-bold uppercase text-xs text-black">Chủ nhật</h3>
-                        <p class="text-xs text-black font-bold uppercase tracking-widest">29.3.2026</p>
-                    </div>
-                    <div class="z-10 bg-white p-1 rounded-full">
-                        <svg class="w-8 h-8 text-[#e63946] fill-current heart-pulse" viewBox="0 0 20 20">
-                            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                        </svg>
-                    </div>
-                    <div class="w-5/12 pl-6">
-                        <p class="text-sm text-black leading-relaxed italic">Đón tiếp quan khách dự tiệc thân mật<br>Nhà trai&Nhà gái</p>
-                    </div>
+            <div class="relative flex items-center justify-between mb-12">
+                <div class="w-5/12 text-right pr-6">
+                    <h3 class="font-bold uppercase text-xs text-black">Chủ nhật</h3>
+                    <p class="text-xs text-black font-bold uppercase tracking-widest">29.3.2026</p>
                 </div>
-
-                <div class="relative flex items-center justify-between mb-12">
-                    <div class="w-5/12 text-right pr-6">
-                        <p class="text-sm text-black leading-relaxed italic">Lễ ăn hỏi, xin dâu và rước dâu</p>
-                    </div>
-                    <div class="z-10 bg-white p-1 rounded-full">
-                        <svg class="w-8 h-8 text-[#e63946] fill-current heart-pulse" viewBox="0 0 20 20">
-                            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                        </svg>
-                    </div>
-                    <div class="w-5/12 pl-6">
-                        <h3 class="font-bold uppercase text-xs text-black">07:00|Thứ hai</h3>
-                        <p class="text-xs text-black font-bold uppercase tracking-widest">30.3.2026</p>
-                    </div>
+                <div class="z-10 bg-white p-1 rounded-full heart-pulse-wave" style="animation-delay: 0s;">
+                    <svg class="w-8 h-8 text-[#e63946] fill-current" viewBox="0 0 20 20">
+                        <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                    </svg>
                 </div>
-
-                <div class="relative flex items-center justify-between mb-12">
-                    <div class="w-5/12 text-right pr-6">
-                        <h3 class="font-bold text-xs uppercase text-black">09:30|Thứ hai</h3>
-                        <p class="text-xs text-black font-bold uppercase tracking-widest">30.3.2026</p>
-                    </div>
-                    <div class="z-10 bg-white p-1 rounded-full">
-                        <svg class="w-8 h-8 text-[#e63946] fill-current heart-pulse" viewBox="0 0 20 20">
-                            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                        </svg>
-                    </div>
-                    <div class="w-5/12 pl-6">
-                        <p class="text-sm text-black leading-relaxed italic">Lễ Thành Hôn</p>
-                    </div>
-                </div>
-
-                <div class="relative flex items-center justify-between">
-                    <div class="w-5/12 text-right pr-6">
-                        <p class="text-sm text-black leading-relaxed italic">Gửi lời cảm ơn & Chụp ảnh cùng quan khách</p>
-                    </div>
-                    <div class="z-10 bg-white p-1 rounded-full">
-                        <svg class="w-8 h-8 text-[#e63946] fill-current heart-pulse" viewBox="0 0 20 20">
-                            <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
-                        </svg>
-                    </div>
-                    <div class="w-5/12 pl-6">
-                        <h3 class="font-bold text-xs uppercase text-black">10:30|Thứ hai</h3>
-                        <p class="text-xs text-black font-bold uppercase tracking-widest">30.3.2026</p>
-                    </div>
+                <div class="w-5/12 pl-6">
+                    <p class="text-sm text-black leading-relaxed italic">Đón tiếp quan khách dự tiệc thân mật<br>Nhà trai&Nhà gái</p>
                 </div>
             </div>
 
-            <div class="flex justify-center mt-3 rotate-180">
-                <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider-removebg-preview.png" class="w-48 opacity-80 transform translate-x-[4.5%]" alt="Sakura Decor">
+            <div class="relative flex items-center justify-between mb-12">
+                <div class="w-5/12 text-right pr-6">
+                    <p class="text-sm text-black leading-relaxed italic">Lễ ăn hỏi, xin dâu và rước dâu</p>
+                </div>
+                <div class="z-10 bg-white p-1 rounded-full heart-pulse-wave" style="animation-delay: 0.4s;">
+                    <svg class="w-8 h-8 text-[#e63946] fill-current" viewBox="0 0 20 20">
+                        <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                    </svg>
+                </div>
+                <div class="w-5/12 pl-6">
+                    <h3 class="font-bold uppercase text-xs text-black">07:00|Thứ hai</h3>
+                    <p class="text-xs text-black font-bold uppercase tracking-widest">30.3.2026</p>
+                </div>
+            </div>
+
+            <div class="relative flex items-center justify-between mb-12">
+                <div class="w-5/12 text-right pr-6">
+                    <h3 class="font-bold text-xs uppercase text-black">09:30|Thứ hai</h3>
+                    <p class="text-xs text-black font-bold uppercase tracking-widest">30.3.2026</p>
+                </div>
+                <div class="z-10 bg-white p-1 rounded-full heart-pulse-wave" style="animation-delay: 0.8s;">
+                    <svg class="w-8 h-8 text-[#e63946] fill-current" viewBox="0 0 20 20">
+                        <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                    </svg>
+                </div>
+                <div class="w-5/12 pl-6">
+                    <p class="text-sm text-black leading-relaxed italic">Lễ Thành Hôn</p>
+                </div>
+            </div>
+
+            <div class="relative flex items-center justify-between">
+                <div class="w-5/12 text-right pr-6">
+                    <p class="text-sm text-black leading-relaxed italic">Gửi lời cảm ơn & Chụp ảnh cùng quan khách</p>
+                </div>
+                <div class="z-10 bg-white p-1 rounded-full heart-pulse-wave" style="animation-delay: 1.2s;">
+                    <svg class="w-8 h-8 text-[#e63946] fill-current" viewBox="0 0 20 20">
+                        <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
+                    </svg>
+                </div>
+                <div class="w-5/12 pl-6">
+                    <h3 class="font-bold text-xs uppercase text-black">10:30|Thứ hai</h3>
+                    <p class="text-xs text-black font-bold uppercase tracking-widest">30.3.2026</p>
+                </div>
             </div>
         </div>
-    </section>
+
+        <div class="flex justify-center mt-3 rotate-180">
+            <img src="https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/flower-divider-removebg-preview.png" class="w-48 opacity-80 transform translate-x-[4.5%]" alt="Sakura Decor">
+        </div>
+    </div>
+</section>
 
     <!-- CALENDAR SECTION -->
-    <section class="py-14 bg-white text-center px-6">
+    <section class="py-8 bg-white text-center px-6">
         <div class="reveal px-4 mt-3">
             <div class="calendar-gold-card max-w-[380px] mx-auto rounded-2xl shadow-xl">
                 
@@ -824,7 +810,7 @@
     </section>
 
     <!-- MAPS SECTION -->
-    <section class="py-16 bg-[#fdfaf7] text-center px-6 border-t border-b border-rose-50">
+    <section class="py-12 bg-[#fdfaf7] text-center px-6 border-t border-b border-rose-50">
         <div class="zoom-bold-reveal mb-6"><h2 class="font-title text-base text-black mb-2 font-bold uppercase tracking-widest text-center">Địa điểm tổ chức</h2></div>
         <div class="reveal mb-8 text-gray-800"><h3 class="text-base font-bold mb-1">Nhà văn hóa Thôn Nga Trung</h3><p class="text-gray-900 text-[11px] font-extrabold tracking-widest uppercase">Xã Hà Châu, H. Hà Trung, T. Thanh Hóa</p></div>
         <div class="reveal">
@@ -840,7 +826,7 @@
     </section>
 
     <!-- PHOTO ALBUM -->
-    <section class="py-20 bg-white text-center px-4">
+    <section class="py-15 bg-white text-center px-4">
         <div class="flex items-center justify-center gap-4 mb-10 slide">
             <div class="h-[1px] bg-gray-100 flex-grow max-w-[80px]"></div>
             <h2 class="font-title text-lg text-black font-bold uppercase tracking-widest">Album Ảnh Cưới</h2>
