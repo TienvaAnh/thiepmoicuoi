@@ -938,8 +938,8 @@
                     </select>
                     <div class="absolute right-5 top-4 pointer-events-none opacity-20 text-[10px]">▼</div>
                 </div>
-                <div class="relative mb-3"></div>
-                    <select id="guests" class="rsvp-input appearance-none text-[13px] font-semibold tracking-tight" required>
+                <div class="relative mb-0"></div>
+                    <select id="soluong" class="rsvp-input appearance-none text-[13px] font-semibold tracking-tight" required>
                         <option value="" disabled selected>Bạn đi mấy người zạ?</option>
                         <option value="0">Chỉ mình mình đi</option>
                         <option value="1">Đi cùng 1 người</option>
@@ -1036,8 +1036,8 @@
         // Nếu có tên trong link thì dùng, không thì mới lấy tên khách tự gõ
         name: nameFromURL ? nameFromURL.replace(/_/g, ' ') : document.getElementById('name').value,
         status: isAttending ? 'Tham dự' : 'Không tham dự',
-        relation: document.getElementById('relation').value,
-        guests: document.getElementById('guests').value,
+        guests: document.getElementById('relation').value,
+        soluong: document.getElementById('soluong').value,
         message: document.getElementById('message').value
     };
 
