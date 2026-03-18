@@ -504,7 +504,20 @@
     </style>
 </head>
 <body class="overflow-x-hidden">
-
+    <script>
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let guestName = urlParams.get('n') || urlParams.get('to');
+            if (guestName) {
+                guestName = guestName.replace(/_/g, ' ');
+                // Tìm và thay thế tên ngay lập tức nếu phần tử đã tồn tại
+                document.addEventListener("DOMContentLoaded", function() {
+                    const guestEl = document.getElementById('guest-name');
+                    if (guestEl) guestEl.innerText = guestName;
+                });
+            }
+        })();
+    </script>
     <!-- AUDIO PLAYER (Updated with your GitHub MP3 link) -->
     <audio id="wedding-audio" loop>
         <source src=https://raw.githubusercontent.com/TienvaAnh/AnhTien/main/(4)%20EM%20%C4%90%E1%BB%92NG%20%C3%9D%20(I%20DO)%20-%20%C4%90%E1%BB%A8C%20PH%C3%9AC%20x%20911%20x%20KH%E1%BA%AEC%20H%C6%AFNG%20-%20OFFICIAL%20MUSIC%20VIDEO%20-%20VALENTINE%202023%20-%20YouTube%20(mp3cut.net).mp3 type="audio/mpeg">
@@ -1105,16 +1118,7 @@
         document.querySelectorAll('.reveal, .slide-left, .slide-right, .zoom-bold-reveal').forEach(el => observer.observe(el));
 
         window.onload = () => {
-            const params = new URLSearchParams(window.location.search);
-            // 1. Lấy tên từ tham số 'n' hoặc 'to'
-            let guest = params.get('n') || params.get('to'); 
             
-            if (guest) {
-                guest = guest.replace(/_/g, ' '); // Đổi dấu gạch dưới thành khoảng trắng
-                
-                // 2. Hiển thị tên lên thiệp mời
-                const guestNameEl = document.getElementById('guest-name');
-                if(guestNameEl) guestNameEl.innerText = guest;
                 
                 // 3. Tự động điền vào ô "Tên thân thương" trong Form
                 const nameInput = document.getElementById('name');
