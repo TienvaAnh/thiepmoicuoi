@@ -1223,7 +1223,21 @@
         });
     </script>
 </body>
-
+<script>
+    (function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let guestName = urlParams.get('n') || urlParams.get('to');
+        
+        if (guestName) {
+            guestName = guestName.replace(/_/g, ' ');
+            // Chạy ngay khi cấu trúc web vừa sẵn sàng, không đợi ảnh
+            document.addEventListener('DOMContentLoaded', function() {
+                const guestEl = document.getElementById('guest-name');
+                if (guestEl) guestEl.innerText = guestName;
+            });
+        }
+    })();
+</script>
 </html>
 
 
