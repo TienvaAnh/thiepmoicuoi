@@ -1192,35 +1192,42 @@
         // 3. Ẩn khi chạm vào bất kỳ đâu trên màn hình (tùy chọn, giúp trải nghiệm tốt hơn)
         // document.addEventListener('touchstart', hideMusicGuide, { once: true });
         // Tự động gửi trạng thái "Đã xem" khi vừa mở trang
-       window.addEventListener('load', function() {
+     // GIỮ NGUYÊN LOGIC VÀ BIẾN CỦA BẠN - CHỈ THAY ĐỔI CÁCH THỨC LOAD
+        (function() {
             const urlParams = new URLSearchParams(window.location.search);
             let guestName = urlParams.get('n') || urlParams.get('to');
             
-            // CHẶN BOT: Nếu không có tên khách thì THOÁT LUÔN, không gửi gì cả
-            if (!guestName || guestName === "" || guestName.toLowerCase() === "khách ẩn danh") {
-                console.log("Truy cập không có tên khách (có thể là Bot), không gửi thông báo.");
-                return; 
+            // 1. HIỆN TÊN NGAY (Không đợi window.load)
+            if (guestName) {
+                const formattedName = guestName.replace(/_/g, ' ');
+                // Chạy ngay lập tức khi trình duyệt đọc đến đây
+                const gEl = document.getElementById('guest-name');
+                if (gEl) gEl.innerText = formattedName;
+                const nInp = document.getElementById('name');
+                if (nInp) nInp.value = formattedName;
             }
 
-            // Nếu có tên khách, tiến hành đổi dấu gạch dưới thành khoảng trắng
-            guestName = guestName.replace(/_/g, ' ');
+            // 2. CHẶN BOT VÀ GỬI DATA (Đúng các biến bạn đã đặt)
+            if (!guestName || guestName === "" || guestName.toLowerCase() === "khách ẩn danh") {
+                return; // Chặn Bot đúng ý bạn
+            }
 
             const data = {
-                name: guestName,
+                name: guestName.replace(/_/g, ' '),
                 status: "Đã xem thiệp",
                 guests: "0",
                 message: "Vừa mở xem thiệp",
                 action: "view_only"
             };
 
-            // Gửi dữ liệu đi
-            fetch('https://script.google.com/macros/s/AKfycbxbyoqXyfVwDojVItYjBbEnWlNqmGDUDjNimzNqP7Tyt1nC84dBLo9AhMwrYfJpG8RTSQ/exec', { // Giữ nguyên link script của bạn
+            // Gửi dữ liệu đúng link script của bạn
+            fetch('https://script.google.com/macros/s/AKfycbxbyoqXyfVwDojVItYjBbEnWlNqmGDUDjNimzNqP7Tyt1nC84dBLo9AhMwrYfJpG8RTSQ/exec', {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
-        }); 
+        })();
     </script>
 </body>
 </html>
