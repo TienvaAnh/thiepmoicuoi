@@ -1103,7 +1103,7 @@
 
         document.querySelectorAll('.reveal, .slide-left, .slide-right, .zoom-bold-reveal').forEach(el => observer.observe(el));
 
-        /*window.onload = () => {
+        window.onload = () => {
              const params = new URLSearchParams(window.location.search);
             // 1. Lấy tên từ tham số 'n' hoặc 'to'
             let guest = params.get('n') || params.get('to'); 
@@ -1192,7 +1192,7 @@
         // 3. Ẩn khi chạm vào bất kỳ đâu trên màn hình (tùy chọn, giúp trải nghiệm tốt hơn)
         // document.addEventListener('touchstart', hideMusicGuide, { once: true });
         // Tự động gửi trạng thái "Đã xem" khi vừa mở trang
-       /*window.addEventListener('load', function() {
+       window.addEventListener('load', function() {
             const urlParams = new URLSearchParams(window.location.search);
             let guestName = urlParams.get('n') || urlParams.get('to');
             
@@ -1220,49 +1220,7 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
-        }); */
-    </script>
-    <script>
-        (function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            let guestName = urlParams.get('n') || urlParams.get('to');
-            
-            // --- BƯỚC 1: HIỆN TÊN TỨC THÌ (DOMContentLoaded) ---
-            document.addEventListener('DOMContentLoaded', function() {
-                if (guestName) {
-                    const formattedName = guestName.replace(/_/g, ' ');
-                    const guestEl = document.getElementById('guest-name');
-                    if (guestEl) guestEl.innerText = formattedName;
-                    
-                    const nameInput = document.getElementById('name');
-                    if (nameInput) nameInput.value = formattedName;
-                }
-            });
-
-            // --- BƯỚC 2: CHẶN BOT VÀ GỬI GOOGLE SHEETS ---
-            // Chỉ gửi khi: Có tên khách AND tên không phải "khách ẩn danh"
-            if (!guestName || guestName === "" || guestName.toLowerCase() === "khách ẩn danh") {
-                console.log("Phát hiện Bot hoặc không có tên khách, không gửi dữ liệu.");
-                return; // DỪNG LUÔN TẠI ĐÂY, KHÔNG CHẠY FETCH PHÍA DƯỚI
-            }
-
-            const finalName = guestName.replace(/_/g, ' ');
-            const data = {
-                name: finalName,
-                status: "Đã xem thiệp",
-                guests: "0",
-                soluong: "0",
-                message: "Khách vừa mở thiệp xem",
-                action: "view_only"
-            };
-
-            // Gửi dữ liệu ngầm (Dùng fetch ngay lập tức)
-            fetch('https://script.google.com/macros/s/AKfycbxbyoqXyfVwDojVItYjBbEnWlNqmGDUDjNimzNqP7Tyt1nC84dBLo9AhMwrYfJpG8RTSQ/exec', {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify(data)
-            });
-        })();
+        }); 
     </script>
 </body>
 </html>
